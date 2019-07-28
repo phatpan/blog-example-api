@@ -6,33 +6,20 @@ import (
 	"github.com/labstack/echo"
 )
 
-type response struct {
-	result []blog `json:"result"`
-}
-
 type blog struct {
 	ID       int    `json:"id"`
-	Name     string `json:"name"`
-	Content  string `json:"errorMsg"`
+	Title    string `json:"title"`
+	Url      string `json:"url"`
+	Content  string `json:"content"`
 	Clapping int    `json:"clapping"`
 }
 
 func GetBlogList(c echo.Context) error {
-	response := response{
-		result: []blog{
-			blog{
-				ID:       1,
-				Name:     "On The Subject Of Subjects (in RxJS)",
-				Content:  "Subjects in RxJS are often misunderstood. Because they allow you to imperatively push values into an observable stream, people tend to abuse Subjects when they’re not quite sure how to make an Observable out of something. The pattern looks a little like this",
-				Clapping: 1,
-			},
-			blog{
-				ID:       2,
-				Name:     "On The Subject Of Subjects (in RxJS)",
-				Content:  "Subjects in RxJS are often misunderstood. Because they allow you to imperatively push values into an observable stream, people tend to abuse Subjects when they’re not quite sure how to make an Observable out of something. The pattern looks a little like this",
-				Clapping: 1,
-			},
-		},
-	}
-	return c.JSON(http.StatusOK, response)
+	return c.JSON(http.StatusOK, blog{
+		ID:       1,
+		Title:    "Understanding rxjs BehaviorSubject, ReplaySubject and AsyncSubject",
+		Url:      "https://miro.medium.com/max/1000/1*3xWKyEoCO-6DY2DkQKFpvw.jpeg",
+		Content:  "Subjects are used for multicasting Observables. This means that Subjects will make sure each subscription gets the exact same value as the Observable execution is shared among the subscribers. You can do this using the Subject class. But rxjs offers different types of Subjects, namely: BehaviorSubject, ReplaySubject and AsyncSubject.",
+		Clapping: 0,
+	})
 }
