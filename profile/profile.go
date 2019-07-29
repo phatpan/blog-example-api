@@ -29,6 +29,10 @@ func UpdateProfile(c echo.Context) error {
 		return err
 	}
 
+	if profile.Name == "azumo" { // Simulate case return error
+		return c.JSON(http.StatusBadRequest, "Could not update "+profile.Name)
+	}
+
 	file, _ := json.MarshalIndent(profile, "", " ")
 
 	_ = ioutil.WriteFile("profile/data.json", file, 0644)
