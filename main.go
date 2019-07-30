@@ -5,8 +5,8 @@ import (
 
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
-	"github.com/phatpan/blog-example-api/blog"
-	"github.com/phatpan/blog-example-api/profile"
+	"github.com/phatpan/subjects-state-example-api/blog"
+	"github.com/phatpan/subjects-state-example-api/profile"
 )
 
 func main() {
